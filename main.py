@@ -2,6 +2,7 @@ import os
 
 from dotenv import load_dotenv
 from openai import OpenAI
+from openai.types.responses import response_apply_patch_tool_call
 
 
 def main():
@@ -25,6 +26,11 @@ def main():
         ]
     )
 
+    if not response.usage:
+        raise RuntimeError("failed API request")
+
+    print(f"Prompt tokens: {tokens.prompt_tokens}")
+    print(f"Response tokens: {tokens.completion_tokens}")
     print("Response:")
     print(response.choices[0].message.content)
 
