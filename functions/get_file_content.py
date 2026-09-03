@@ -2,6 +2,7 @@ import os
 
 from config import MAX_CHARS
 
+
 def get_file_content(working_directory: str, file_path: str) -> str:
     try:
         abs_working_directory = os.path.abspath(working_directory)
